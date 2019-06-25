@@ -1,0 +1,17 @@
+
+export const REQUEST_API_FETCH = 'REQUEST_API_FETCH';
+
+export type REQUEST_API_FETCH = typeof REQUEST_API_FETCH;
+
+export const REQUEST_API_ERROR = 'FETCH_API_ERROR';
+
+export type REQUEST_API_ERROR = typeof REQUEST_API_ERROR;
+
+// reducer
+export const REQUEST_API_SAVE = 'REQUEST_API_SAVE';
+
+export type REQUEST_API_SAVE = typeof REQUEST_API_SAVE;
+
+export const REQUEST_API_DELETE = 'REQUEST_API_DELETE';
+
+export type REQUEST_API_DELETE = typeof REQUEST_API_DELETE;

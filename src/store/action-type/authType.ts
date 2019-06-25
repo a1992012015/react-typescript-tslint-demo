@@ -1,0 +1,32 @@
+export const AUTH_GET_TOKEN = 'AUTH_GET_TOKEN';
+
+export const AUTH_GET_TOKEN_SUCCESS = 'AUTH_GET_TOKEN_SUCCESS';
+
+export type AUTH_GET_TOKEN_SUCCESS = typeof AUTH_GET_TOKEN_SUCCESS;
+
+export const AUTH_GET_TOKEN_ERROR = 'AUTH_GET_TOKEN_ERROR';
+
+export const AUTH_GET_USER = 'AUTH_GET_USER';
+
+export const AUTH_GET_USER_SUCCESS = 'AUTH_GET_USER_SUCCESS';
+
+export type AUTH_GET_USER_SUCCESS = typeof AUTH_GET_USER_SUCCESS;
+
+export const AUTH_GET_USER_ERROR = 'AUTH_GET_USER_ERROR';
+
+// reducer
+export const AUTH_SAVE_INFO = 'SAVE_INFO';
+
+export type AUTH_SAVE_INFO = typeof AUTH_SAVE_INFO;
+
+export const AUTH_DELETE_INFO = 'DELETE_INFO';
+
+export type AUTH_DELETE_INFO = typeof AUTH_DELETE_INFO;
+
+export const AUTH_SAVE_TOKEN = 'SAVE_TOKEN';
+
+export type AUTH_SAVE_TOKEN = typeof AUTH_SAVE_TOKEN;
+
+export const AUTH_SAVE_LOADING = 'SAVE_LOADING';
+
+export type AUTH_SAVE_LOADING = typeof AUTH_SAVE_LOADING;

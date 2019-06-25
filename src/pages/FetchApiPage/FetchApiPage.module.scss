@@ -1,0 +1,18 @@
+
+.saga {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .saga-action button {
+    margin: 10px;
+  }
+
+  .saga-text {
+    color: #ffffff;
+    margin: 10px 0;
+  }
+}
