@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import { injectReducer } from '@/store';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-
-import { injectReducer } from '../../store';
+import React, { Component, ComponentType } from 'react';
 
 /**
  * Dynamically injects a reducer
@@ -9,12 +8,15 @@ import { injectReducer } from '../../store';
  * @param {function} reducer A reducer that will be injected
  *
  */
-export default function(reducer) {
-  return WrappedComponent => {
+export default function(reducer: any) {
+  return (WrappedComponent: ComponentType) => {
+    /**
+     * ...
+     */
     class ReducerInjector extends Component {
       static WrappedComponent = WrappedComponent;
 
-      constructor(props) {
+      constructor(props: any) {
         super(props);
         injectReducer(reducer);
       }

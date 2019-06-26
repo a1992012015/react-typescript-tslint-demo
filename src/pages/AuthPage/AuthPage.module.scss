@@ -1,0 +1,23 @@
+@import '../../styles/vars';
+
+.auth {
+  flex-grow: 1;
+  display: flex;
+  min-width: $min-view-width;
+  max-width: $max-view-width;
+  width: 100%;
+  margin: 30px auto;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+
+  .logo {
+    width: 120px;
+    margin-bottom: 30px;
+    height: auto;
+    margin-top: 50px;
+  }
+  .title {
+    font-weight: 700;
+  }
+}

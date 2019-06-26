@@ -12,7 +12,6 @@ import createReducerCreator from './reducer';
 import authReducer from './reducer/authReducer';
 import homeListReducer from './reducer/homeListReducer';
 import requestReducer from './reducer/requestReducer';
-import sagaReducer from './reducer/sagaReducer';
 import shoppingCartReducer from './reducer/shoppingCartReducer';
 
 import rootSaga from './saga';
@@ -56,7 +55,12 @@ interface Options<S> extends EnhancerOptions {
  * @param options Options to construct store with as well
  * @return Redux store instance
  */
-function configureStore<S>({ enhancers: baseEnhancers = [], reducer, initialState, middleware: baseMiddleware = [], ...config }: Options<S>) {
+function configureStore<S>({
+                             enhancers: baseEnhancers = [],
+                             reducer, initialState,
+                             middleware: baseMiddleware = [],
+                             ...config
+                           }: Options<S>) {
   let middleware = baseMiddleware;
 
   // Add redux-logger middleware in development when there's no Redux DevTools
@@ -73,11 +77,6 @@ function configureStore<S>({ enhancers: baseEnhancers = [], reducer, initialStat
       createStore(reducer, compose(...enhancers));
 }
 
-const persistSagaConfig = {
-  key: 'saga',
-  storage,
-};
-
 const persistAuthConfig = {
   key: 'saga',
   storage,
@@ -92,7 +91,6 @@ const persistShoppingCartConfig = {
 export const history = createBrowserHistory();
 
 export const createReducer = createReducerCreator<ReducersFull>(history, {
-  saga: persistReducer(persistSagaConfig, sagaReducer),
   auth: persistReducer(persistAuthConfig, authReducer),
   shoppingCart: persistReducer(persistShoppingCartConfig, shoppingCartReducer),
   request: requestReducer,

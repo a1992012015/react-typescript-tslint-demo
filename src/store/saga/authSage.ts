@@ -1,4 +1,4 @@
-import { getAuthInfoApi } from '@/api/authApi';
+import { getAuthInfoApi, getAuthTokenApi } from '@/api/authApi';
 import { put, take, takeEvery } from 'redux-saga/effects';
 import { AUTH_GET_TOKEN_SUCCESS, AUTH_GET_USER_SUCCESS, AUTH_LOGIN } from '../action-type/authType';
 import { authSaveToken, authSaveUser } from '../action/authAction';
@@ -10,7 +10,7 @@ function* watchLogin() {
   while (true) {
     const action = yield take(AUTH_LOGIN);
     console.log(action);
-    // yield put();
+    yield put(getAuthTokenApi(action.info));
   }
 }
 

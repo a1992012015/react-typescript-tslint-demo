@@ -1,6 +1,4 @@
-import { AuthLoginInterface } from '@/interfaces/authInterface';
 import { AuthInterface, ReducersFull, ShoppingCartInterface } from '@/interfaces/globalInterface';
-import { authLogin } from '@/store/action/authAction';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -77,7 +75,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     signOutAction: () => dispatch({ type: 'SIGN_OUT' }),
     getUserInfoAction: () => dispatch({ type: 'GET_USER_INFO' }),
-    creatRequest: (info: AuthLoginInterface) => dispatch(authLogin(info)),
     mergedShoppingCartAction: (phone: string) => {
       dispatch({
         type: 'MERGED_SHOPPING_CART',
