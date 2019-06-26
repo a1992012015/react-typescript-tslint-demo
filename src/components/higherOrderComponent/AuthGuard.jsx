@@ -29,6 +29,11 @@ const AuthGuard = InnerComponent => {
     mapDispatchToProps
   );
 
+  console.log(compose(withConnect))
+  console.log(connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ))
   return compose(withConnect)(LoginGuardComponent);
 };
 

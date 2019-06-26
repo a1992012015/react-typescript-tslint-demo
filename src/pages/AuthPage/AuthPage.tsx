@@ -1,6 +1,6 @@
 import { AuthInterface, ReducersFull } from '@/interfaces/globalInterface';
 import { History, Location } from 'history';
-import React, { Component } from 'react';
+import React, { Component, ComponentType } from 'react';
 import Loadable from 'react-loadable';
 import { connect } from 'react-redux';
 import { match as Match, Route } from 'react-router-dom';
@@ -41,7 +41,6 @@ interface Props {
  */
 class AuthPage extends Component<Props, object> {
   render() {
-    console.log(this.props);
     const { match } = this.props;
     return (
         <div className={styles['auth']}>
@@ -56,21 +55,4 @@ class AuthPage extends Component<Props, object> {
     );
   }
 }
-
-const mapStateToProps = (state: ReducersFull) => {
-  return {};
-};
-
-const mapDispatchToProps = {};
-
-const withConnect = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-);
-
-console.log(compose(LoginGuard));
 export default compose(LoginGuard)(AuthPage);
-// export default connect(
-//     mapStateToProps,
-//     mapDispatchToProps,
-// )(HomeListPage);

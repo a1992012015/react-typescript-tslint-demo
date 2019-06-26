@@ -5,22 +5,20 @@ import { connect } from 'react-redux';
 import { match, Redirect } from 'react-router-dom';
 import { compose } from 'redux';
 
-const LoginGuard = (InnerComponent: ComponentType) => {
-  console.log(InnerComponent);
+interface Props {
+  readonly auth: AuthInterface;
+  readonly match: match;
+  readonly history: History;
+  readonly location: Location;
+}
 
-  interface Props {
-    readonly auth: AuthInterface;
-    readonly match: match;
-    readonly history: History;
-    readonly location: Location;
-  }
+const LoginGuard = (InnerComponent: ComponentType<Props>) => {
 
   /**
    * 高阶组建
    */
   class LoginGuardComponent extends Component<Props> {
     render() {
-      console.log(this.props);
       const { auth } = this.props;
       if (!auth.isSignIn) {
         return <InnerComponent {...this.props} />;
@@ -30,11 +28,9 @@ const LoginGuard = (InnerComponent: ComponentType) => {
     }
   }
 
-  const mapStateToProps = (state: ReducersFull, stateProps: any) => {
-    console.log(stateProps);
+  const mapStateToProps = (state: ReducersFull) => {
     return {
       auth: state.auth,
-      ...stateProps,
     };
   };
 
