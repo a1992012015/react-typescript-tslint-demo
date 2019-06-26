@@ -1,5 +1,5 @@
 export const config = {
-  authApi: 'http://qa-oauth-bmark.tianfutv.com',
-  mallApi: 'http://qa-mall-bmark.tianfutv.com',
+  authApi: 'http://192.168.180.242:8081',
+  mallApi: 'http://192.168.180.242:8080',
   env: 'development',
 };

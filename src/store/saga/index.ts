@@ -1,6 +1,7 @@
-import {all} from 'redux-saga/effects';
+import { all } from 'redux-saga/effects';
 
 import authSage from './authSage';
+import homeListSage from './homeListSage';
 import requestAction from './requestSage';
 import sagaAction from './sagaSaga';
 
@@ -12,5 +13,6 @@ export default function* rootSaga() {
     ...sagaAction,
     ...requestAction,
     ...authSage,
+    ...homeListSage,
   ]);
 }

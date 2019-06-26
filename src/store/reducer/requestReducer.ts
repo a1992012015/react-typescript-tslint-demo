@@ -1,9 +1,20 @@
+import { RequestInterface } from '@/interfaces/globalInterface';
 import { Action } from 'redux';
-import { RequestInterface } from '../../interfaces/globalInterface';
 import { REQUEST_API_DELETE, REQUEST_API_SAVE } from '../action-type/requestType';
 import { requestAction } from '../action/requestAction';
 
-const requestInit: RequestInterface = {};
+const requestInit: RequestInterface = {
+  compositionList: {
+    orderBy: [],
+    orderByKey: 'created_at',
+    orderByLoading: true,
+    orderTotal: 0,
+    type: [],
+    typeKey: 'ALL',
+    typeLoading: true,
+    typeTotal: 0,
+  },
+};
 
 /**
  * 获取api数据的reducer

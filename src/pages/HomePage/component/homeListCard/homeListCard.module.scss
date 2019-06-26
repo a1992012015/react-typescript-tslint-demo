@@ -1,0 +1,45 @@
+.list-card {
+  width: 18%;
+  margin-bottom: 20px;
+
+  &:focus {
+    text-decoration: none;
+  }
+
+  .list-card-img {
+    width: 100%;
+    padding-top: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .list-card-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 15px 0 0;
+    color: #000;
+  }
+
+  .list-card-type {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(85, 85, 85, 1);
+    margin: 0;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #dddddd;
+  }
+
+  .list-card-option {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+
+    .list-card-item {
+      color: #555555;
+    }
+  }
+}

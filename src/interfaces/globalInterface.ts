@@ -1,3 +1,5 @@
+import { HomeListInterface } from '@/interfaces/homeListInterface';
+import { RequestFullInterface } from '@/interfaces/requestInterface';
 import { RouterState } from 'connected-react-router';
 import { Store } from 'redux';
 import { PersistPartial } from 'redux-persist';
@@ -7,7 +9,15 @@ export interface SagaInterface {
 }
 
 export interface RequestInterface {
-  [key: string]: object;
+  [key: string]: RequestFullInterface;
+}
+
+export interface ShoppingCartInterface {
+  cart: {
+    [key: string]: [];
+    notLogin: [];
+  };
+  isLoading: boolean;
 }
 
 export interface AuthInterface {
@@ -35,8 +45,10 @@ export interface AuthInterface {
 export interface ReducersFull {
   auth: AuthInterface & PersistPartial;
   saga: SagaInterface & PersistPartial;
+  shoppingCart: ShoppingCartInterface & PersistPartial;
   request: RequestInterface;
   router: RouterState;
+  homeList: HomeListInterface;
 }
 
 export interface NowStore extends Store {

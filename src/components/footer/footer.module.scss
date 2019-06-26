@@ -1,0 +1,43 @@
+@import '../../styles/vars';
+
+$footerHeight: 40px;
+
+.footer {
+  width: 100%;
+  min-width: $min-view-width;
+  display: flex;
+  align-items: center;
+  background: #353535;
+
+  .footer-container {
+    min-width: $min-view-width;
+    max-width: $max-view-width;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    align-items: center;
+  }
+
+  .footer-logo {
+    width: 230px;
+  }
+
+  .footer-link {
+    display: flex;
+    color: $white;
+    flex-direction: column;
+
+    .footer-item {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .footer-menu {
+      cursor: pointer;
+      line-height: $footerHeight;
+      margin-left: 30px;
+    }
+  }
+}

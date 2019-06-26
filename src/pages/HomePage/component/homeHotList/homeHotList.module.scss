@@ -1,0 +1,16 @@
+@import '../../../../styles/vars';
+
+.home-list {
+  width: 100%;
+  min-width: $min-view-width;
+  max-width: $max-view-width;
+  margin: 23px auto;
+}
+
+.home-list-hot {
+  border-top: 1px solid #dddddd;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}

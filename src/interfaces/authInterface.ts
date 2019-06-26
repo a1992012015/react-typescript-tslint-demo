@@ -1,5 +1,5 @@
 
-export interface AuthGetTokenInterface {
+export interface AuthLoginInterface {
   username: string;
   password: string;
 }

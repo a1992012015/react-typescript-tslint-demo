@@ -1,0 +1,14 @@
+@import './styles/vars';
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+
+  .App-view {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,3 +1,4 @@
+import { NowStore, ReducersFull } from '@/interfaces/globalInterface';
 import { routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { applyMiddleware, createStore, DeepPartial, Middleware, Reducer, ReducersMapObject } from 'redux';
@@ -6,13 +7,13 @@ import { createLogger } from 'redux-logger';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web and AsyncStorage for react-native
 import createSagaMiddleware from 'redux-saga';
-
-import { NowStore, ReducersFull } from '../interfaces/globalInterface';
 import createReducerCreator from './reducer';
 
 import authReducer from './reducer/authReducer';
+import homeListReducer from './reducer/homeListReducer';
 import requestReducer from './reducer/requestReducer';
 import sagaReducer from './reducer/sagaReducer';
+import shoppingCartReducer from './reducer/shoppingCartReducer';
 
 import rootSaga from './saga';
 
@@ -55,7 +56,7 @@ interface Options<S> extends EnhancerOptions {
  * @param options Options to construct store with as well
  * @return Redux store instance
  */
-function configureStore<S>({enhancers: baseEnhancers = [], reducer, initialState, middleware: baseMiddleware = [], ...config}: Options<S>) {
+function configureStore<S>({ enhancers: baseEnhancers = [], reducer, initialState, middleware: baseMiddleware = [], ...config }: Options<S>) {
   let middleware = baseMiddleware;
 
   // Add redux-logger middleware in development when there's no Redux DevTools
@@ -83,12 +84,19 @@ const persistAuthConfig = {
   blacklist: ['userInfo', 'isLoading'],
 };
 
+const persistShoppingCartConfig = {
+  key: 'shoppingCart',
+  storage,
+};
+
 export const history = createBrowserHistory();
 
 export const createReducer = createReducerCreator<ReducersFull>(history, {
   saga: persistReducer(persistSagaConfig, sagaReducer),
   auth: persistReducer(persistAuthConfig, authReducer),
+  shoppingCart: persistReducer(persistShoppingCartConfig, shoppingCartReducer),
   request: requestReducer,
+  homeList: homeListReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();

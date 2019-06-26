@@ -1,7 +1,18 @@
-import { put, takeEvery } from 'redux-saga/effects';
-import { getAuthInfoApi } from '../../api/authApi';
-import { AUTH_GET_TOKEN_SUCCESS, AUTH_GET_USER_SUCCESS } from '../action-type/authType';
+import { getAuthInfoApi } from '@/api/authApi';
+import { put, take, takeEvery } from 'redux-saga/effects';
+import { AUTH_GET_TOKEN_SUCCESS, AUTH_GET_USER_SUCCESS, AUTH_LOGIN } from '../action-type/authType';
 import { authSaveToken, authSaveUser } from '../action/authAction';
+
+/**
+ * 监听login的action
+ */
+function* watchLogin() {
+  while (true) {
+    const action = yield take(AUTH_LOGIN);
+    console.log(action);
+    // yield put();
+  }
+}
 
 /**
  * 监听Token获取成功的action
@@ -37,6 +48,7 @@ function* getUserSuccessWorker(action: { type: AUTH_GET_USER_SUCCESS, response: 
 }
 
 export default [
+  watchLogin(),
   watchTokenSuccess(),
   watchUserSuccess(),
 ];

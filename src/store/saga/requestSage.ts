@@ -1,10 +1,10 @@
+import { environments } from '@/environments';
+import { RequestConfigInterface } from '@/interfaces/requestInterface';
+import { store } from '@/store';
 import axios from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { environments } from '../../environments';
-import { RequestConfigInterface } from '../../interfaces/requestInterface';
 import { REQUEST_API_FETCH } from '../action-type/requestType';
-import { fetchApiError, requestApiError, requestApiSave, requestApiStarted, requestApiSuccess } from '../action/requestAction';
-import { store } from '../index';
+import { fetchApiError, requestApiError, requestApiStarted, requestApiSuccess } from '../action/requestAction';
 
 /**
  * 监听发送ajax请求的action
@@ -23,7 +23,7 @@ function* fetchApiWorker(action: { type: string; config: RequestConfigInterface 
   try {
     yield put(requestApiStarted(config.requestType));
     const response = yield call(callApiWorker, config);
-    yield call(callApiSuccessWorker, config.successType, response, config.storeKey);
+    yield call(callApiSuccessWorker, config.successType, response, config);
   } catch ({ response }) {
     if (response) {
       yield put(requestApiError(config.errorType, JSON.parse(response.request.response)));
@@ -56,13 +56,15 @@ function callApiWorker(payload: RequestConfigInterface) {
  * Api调用成功
  * @param actionType api成功的action
  * @param response api返回的数据
- * @param key 需要存储到requestReducer的数据key
+ * @param config 请求的参数配置
  */
-function* callApiSuccessWorker(actionType: string, response: object, key: string) {
-  yield put(requestApiSuccess(actionType, response));
-  if (key) {
-    yield put(requestApiSave(response, key));
-  }
+function* callApiSuccessWorker(actionType: string, response: any, config: RequestConfigInterface) {
+  console.log(config.options);
+  const data = config.options.data || config.options.params;
+  yield put(requestApiSuccess(actionType, response, data));
+  // if (key) {
+  //   yield put(requestApiSave(response, key));
+  // }
 }
 
 export default [

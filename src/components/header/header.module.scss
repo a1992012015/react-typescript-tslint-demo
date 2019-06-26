@@ -1,0 +1,21 @@
+@import '../../styles/vars';
+
+.header {
+  min-width: $min-view-width;
+  width: 100%;
+  background-image: linear-gradient(to right, #279de8, #31baf1 50%, #298cdf);
+
+  .header-container {
+    height: 70px;
+    width: 100%;
+    max-width: $max-view-width;
+    min-width: $min-view-width;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .header-logo {
+    width: 230px;
+  }
+}

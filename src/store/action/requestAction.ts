@@ -1,10 +1,10 @@
-import { RequestConfigInterface } from '../../interfaces/requestInterface';
+import { RequestConfigInterface, RequestFullInterface } from '@/interfaces/requestInterface';
 import { REQUEST_API_DELETE, REQUEST_API_ERROR, REQUEST_API_FETCH, REQUEST_API_SAVE } from '../action-type/requestType';
 
 interface SaveResponseInterface {
   type: REQUEST_API_SAVE;
   key: string;
-  value: object;
+  value: RequestFullInterface;
 }
 
 interface DeleteResponseInterface {
@@ -28,7 +28,7 @@ export function requestApiFetch(config: RequestConfigInterface) {
 /**
  * Api调用完成之后将数据存储到requestReduce里面
  */
-export function requestApiSave(value: object, key: string): SaveResponseInterface {
+export function requestApiSave(value: RequestFullInterface, key: string): SaveResponseInterface {
   return {
     type: REQUEST_API_SAVE,
     key,
@@ -61,11 +61,13 @@ export function requestApiStarted(requestType: string) {
  * Api请求成功之后发送的action
  * @param successType api请求成功的action type
  * @param response 请求成功的response
+ * @param data 请求的参数
  */
-export function requestApiSuccess(successType: string, response: object) {
+export function requestApiSuccess(successType: string, response: object, data: any) {
   return {
     type: successType,
     response,
+    data,
   };
 }
 

@@ -21,5 +21,6 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "extends": "./path-config.json"
 }

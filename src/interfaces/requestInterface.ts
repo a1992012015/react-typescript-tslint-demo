@@ -1,3 +1,5 @@
+
+
 export interface RequestConfigInterface {
   requestType: string;
   successType: string;
@@ -13,3 +15,16 @@ export interface RequestConfigInterface {
     data?: object;
   };
 }
+
+export interface CompositionListInterface {
+  orderBy: [];
+  orderByKey: string;
+  orderByLoading: boolean;
+  orderTotal: number;
+  type: [];
+  typeKey: string;
+  typeLoading: boolean;
+  typeTotal: number;
+}
+
+export type RequestFullInterface = CompositionListInterface;

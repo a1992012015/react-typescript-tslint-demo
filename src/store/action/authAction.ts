@@ -1,4 +1,4 @@
-import { AUTH_DELETE_INFO, AUTH_SAVE_INFO, AUTH_SAVE_LOADING, AUTH_SAVE_TOKEN } from '../action-type/authType';
+import { AUTH_DELETE_INFO, AUTH_LOGIN, AUTH_SAVE_INFO, AUTH_SAVE_LOADING, AUTH_SAVE_TOKEN } from '../action-type/authType';
 
 interface SaveLoadingInterface {
   type: AUTH_SAVE_LOADING;
@@ -23,6 +23,16 @@ interface DeleteInfoInterface {
 }
 
 export type authAction = SaveLoadingInterface | SaveInfoInterface | SaveTokenInterface | DeleteInfoInterface;
+
+/**
+ * 登陆
+ */
+export function authLogin(info: object) {
+  return {
+    type: AUTH_LOGIN,
+    info,
+  };
+}
 
 /**
  * 保存api获取到的token

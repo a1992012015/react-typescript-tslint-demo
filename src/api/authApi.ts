@@ -1,4 +1,4 @@
-import { AuthGetTokenInterface } from '../interfaces/authInterface';
+import { AuthLoginInterface } from '@/interfaces/authInterface';
 import {
   AUTH_GET_TOKEN,
   AUTH_GET_TOKEN_ERROR,
@@ -6,14 +6,14 @@ import {
   AUTH_GET_USER,
   AUTH_GET_USER_ERROR,
   AUTH_GET_USER_SUCCESS,
-} from '../store/action-type/authType';
-import { requestApiFetch } from '../store/action/requestAction';
+} from '@/store/action-type/authType';
+import { requestApiFetch } from '@/store/action/requestAction';
 
 /**
  * 获取用户token
  * @param body api参数
  */
-export function getAuthTokenApi(body: AuthGetTokenInterface) {
+export function getAuthTokenApi(body: AuthLoginInterface) {
   return requestApiFetch({
     requestType: AUTH_GET_TOKEN,
     successType: AUTH_GET_TOKEN_SUCCESS,

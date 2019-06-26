@@ -1,0 +1,30 @@
+@import '../../../../styles/vars';
+
+.home-list {
+  width: 100%;
+  min-width: $min-view-width;
+  max-width: $max-view-width;
+  margin: 23px auto;
+}
+
+.home-list-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 17px;
+
+  .home-list-search {
+    width: 300px;
+  }
+}
+
+.home-list-hot {
+  border-top: 1px solid #dddddd;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+
+.home-list-link {
+  text-align: right;
+}

@@ -1,29 +1,45 @@
-import React from 'react';
-import './App.css';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Loadable from 'react-loadable';
+import { Route } from 'react-router-dom';
+import { Layout, BackTop } from 'antd';
 
-import FetchApiPage from './pages/FetchApiPage/FetchApiPage';
+import SwitchDefault from './components/higherOrderComponent/switchDefault';
+import LoadingComponent from './components/higherOrderComponent/loadingComponent';
+import Header from './components/header/Header';
+import Footer from './components/footer/footer';
+import Tips from './components/tips/tips';
 
-const App: React.FC = () => {
-  return (
-      <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo'/>
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-              className='App-link'
-              href='https://reactjs.org'
-              target='_blank'
-              rel='noopener noreferrer'
-          >
-            Learn React
-          </a>
-          <FetchApiPage/>
-        </header>
-      </div>
-  );
-};
+import styles from './App.module.scss';
+
+const HomePage = Loadable({
+  loader: () => import('./pages/HomePage/HomePage'),
+  loading: LoadingComponent,
+});
+
+/**
+ * 项目根路由
+ */
+class App extends Component {
+  render() {
+    return (
+        <Layout className={styles['App']} style={{ minHeight: '100VH' }}>
+          <Header />
+          <Layout.Content className={styles['App-view']}>
+            <SwitchDefault>
+              <Route path='/home' component={HomePage} />
+              {/*<Route path='/auth' component={Auth} />*/}
+              {/*<Route path='/buyer' component={Buyer} />*/}
+              {/*<Route path='/user' component={User} />*/}
+              {/*<Route path='/copyright' component={Copyright} />*/}
+              {/*<Route path='/shopping-cart' component={ShoppingCardUnLogin} />*/}
+            </SwitchDefault>
+          </Layout.Content>
+          <Footer />
+          <Tips />
+          <BackTop />
+        </Layout>
+    );
+  }
+}
 
 export default App;
