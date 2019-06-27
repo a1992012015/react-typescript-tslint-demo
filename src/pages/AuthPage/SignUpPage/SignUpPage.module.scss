@@ -1,0 +1,26 @@
+@import '../../../styles/vars';
+
+.sign-up {
+  .sign-up-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .sign-up-form {
+    width: 300px;
+  }
+
+  .sign-up-form-forgot {
+    float: right;
+  }
+
+  .sign-up-form-button {
+    width: 100%;
+  }
+}
+
+.remember {
+  color: #59cbff;
+  cursor: pointer;
+}

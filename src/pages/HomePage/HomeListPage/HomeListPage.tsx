@@ -1,7 +1,7 @@
 import { ReducersFull } from '@/interfaces/globalInterface';
 import { HomeListApiInterface } from '@/interfaces/homeListInterface';
 import { CompositionListInterface } from '@/interfaces/requestInterface';
-import { homeListGetAll, homeListGetType } from '@/store/action/homeListAction';
+import { homeListGetType } from '@/store/action/homeListAction';
 import { RadioChangeEvent } from 'antd/es/radio';
 import { History } from 'history';
 import React, { Component } from 'react';
@@ -17,8 +17,7 @@ import styles from './HomeListPage.module.scss';
 interface Props {
   history: History;
   compositionList: CompositionListInterface;
-  homeListGetAllList: () => void;
-  homeListGetList: (params: HomeListApiInterface) => void;
+  homeListGet: (params: HomeListApiInterface) => void;
 }
 
 /**
@@ -27,7 +26,8 @@ interface Props {
 class HomeListPage extends Component<Props> {
 
   componentDidMount(): void {
-    this.props.homeListGetAllList();
+    this.props.homeListGet({ order_by: 'released_at', page_size: 5 });
+    this.props.homeListGet({ page_size: 20 });
   }
 
   radioGroupOnChange = (key: string, e: RadioChangeEvent) => {
@@ -35,7 +35,12 @@ class HomeListPage extends Component<Props> {
     if (value === 'ALL') {
       value = null;
     }
-    this.props.homeListGetList({ key, value });
+    const params = key === 'order_by' ? 5 : 20;
+    console.log(key, value);
+    this.props.homeListGet({
+      [key]: value,
+      page_size: params,
+    });
   };
 
   render() {
@@ -60,8 +65,7 @@ const mapStateToProps = (state: ReducersFull) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    homeListGetAllList: () => dispatch(homeListGetAll()),
-    homeListGetList: (params: HomeListApiInterface) => dispatch(homeListGetType(params)),
+    homeListGet: (params: HomeListApiInterface) => dispatch(homeListGetType(params)),
   };
 };
 

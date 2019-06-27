@@ -1,6 +1,6 @@
 import { AuthLoginInterface } from '@/interfaces/authInterface';
 import { AuthInterface, ReducersFull } from '@/interfaces/globalInterface';
-import { authLogin } from '@/store/action/authAction';
+import { authSignIn } from '@/store/action/authAction';
 import { openNotificationWithIcon } from '@/utils/commonUtils';
 import { Button, Checkbox, Form, Icon, Input, Spin } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
@@ -19,7 +19,7 @@ interface Props extends FormComponentProps {
 /**
  * 登陆页面
  */
-class SignIn extends Component<Props> {
+class SignInPage extends Component<Props> {
   handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -56,13 +56,13 @@ class SignIn extends Component<Props> {
                 valuePropName: 'checked',
                 initialValue: true,
               })(<Checkbox>记住密码</Checkbox>)}
-              <Link className={styles['login-form-forgot']} to='/auth/forgotPassword'>
+              <Link className={styles['login-form-forgot']} to='/auth/forgot-password'>
                 找回密码
               </Link>
               <Button {...layout} type='primary' htmlType='submit' className={styles['login-form-button']}>
                 登录
               </Button>
-              <Link to='/auth/signUp'>立刻注册</Link>
+              <Link to='/auth/sign-up'>立刻注册</Link>
             </Form.Item>
           </Form>
         </Spin>
@@ -70,7 +70,7 @@ class SignIn extends Component<Props> {
   }
 }
 
-const SignInForm = Form.create()(SignIn);
+const SignInForm = Form.create()(SignInPage);
 
 const mapStateToProps = (state: ReducersFull) => {
   return {
@@ -80,9 +80,10 @@ const mapStateToProps = (state: ReducersFull) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    signIn: (info: AuthLoginInterface) => dispatch(authLogin(info)),
+    signIn: (info: AuthLoginInterface) => dispatch(authSignIn(info)),
   };
 };
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps,

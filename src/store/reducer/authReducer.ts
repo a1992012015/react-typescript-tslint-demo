@@ -1,5 +1,5 @@
-import { AuthInterface } from '../../interfaces/globalInterface';
-import { AUTH_DELETE_INFO, AUTH_SAVE_INFO, AUTH_SAVE_LOADING, AUTH_SAVE_TOKEN } from '../action-type/authType';
+import { AuthInterface } from '@/interfaces/globalInterface';
+import { AUTH_DELETE_INFO, AUTH_SAVE_CODE_STATUS, AUTH_SAVE_INFO, AUTH_SAVE_TOKEN } from '../action-type/authType';
 import { authAction } from '../action/authAction';
 
 const authInit: AuthInterface = {
@@ -31,11 +31,11 @@ const authInit: AuthInterface = {
  */
 export default function authReducer(state: AuthInterface = authInit, action: authAction): AuthInterface {
   switch (action.type) {
-    case AUTH_SAVE_LOADING:
+    case AUTH_SAVE_CODE_STATUS:
       return { ...state, isLoading: true };
     case AUTH_SAVE_INFO:
       Object.assign(state, action.payload);
-      return { ...state, isLoading: false };
+      return { ...state, isLoading: false, isSignIn: true };
     case AUTH_SAVE_TOKEN:
       Object.assign(state, action.payload);
       return { ...state };

@@ -1,4 +1,13 @@
-
+export interface AxiosInterface {
+  baseURL?: 'authApi' |'mallApi';
+  options: {
+    url: string;
+    method?: 'post' | 'get' | 'put' | 'delete';
+    params?: object;
+    headers?: object;
+    data?: object;
+  };
+}
 
 export interface RequestConfigInterface {
   requestType: string;

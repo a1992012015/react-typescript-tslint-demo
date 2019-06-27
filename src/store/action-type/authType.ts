@@ -1,3 +1,29 @@
+// 无token登陆
+export const AUTH_SIGN_IN = 'AUTH_SIGN_IN';
+
+// 有token登陆
+export const AUTH_SIGN_IN_TOKEN = 'AUTH_SIGN_IN_TOKEN';
+
+// 登陆出错
+export const AUTH_SIGN_IN_ERROR = 'AUTH_SIGN_IN_ERROR';
+
+// 退出登录
+export const AUTH_SIGN_OUT = 'AUTH_SIGN_OUT';
+
+// 发送验证码
+export const AUTH_SEND_CODE_SIGN_UP = 'AUTH_SEND_CODE_SIGN_UP';
+export const AUTH_SEND_CODE_FORGOT = 'AUTH_SEND_CODE_FORGOT';
+
+export const AUTH_SIGN_UP = 'AUTH_SIGN_UP';
+
+// 找回密码
+export const AUTH_FORGOT = 'AUTH_FORGOT';
+
+
+
+
+
+// 发送token
 export const AUTH_GET_TOKEN = 'AUTH_GET_TOKEN';
 
 export const AUTH_GET_TOKEN_SUCCESS = 'AUTH_GET_TOKEN_SUCCESS';
@@ -6,6 +32,7 @@ export type AUTH_GET_TOKEN_SUCCESS = typeof AUTH_GET_TOKEN_SUCCESS;
 
 export const AUTH_GET_TOKEN_ERROR = 'AUTH_GET_TOKEN_ERROR';
 
+// 获取信息
 export const AUTH_GET_USER = 'AUTH_GET_USER';
 
 export const AUTH_GET_USER_SUCCESS = 'AUTH_GET_USER_SUCCESS';
@@ -14,7 +41,27 @@ export type AUTH_GET_USER_SUCCESS = typeof AUTH_GET_USER_SUCCESS;
 
 export const AUTH_GET_USER_ERROR = 'AUTH_GET_USER_ERROR';
 
-export const AUTH_LOGIN = 'AUTH_LOGIN';
+// 发送验证码api
+export const AUTH_SEND_CODE_API = 'AUTH_SEND_CODE_API';
+
+export const AUTH_SEND_CODE_API_ERROR = 'AUTH_SEND_CODE_API_ERROR';
+
+export const AUTH_SEND_CODE_API_SUCCESS = 'AUTH_SEND_CODE_API_SUCCESS';
+
+export type AUTH_SEND_CODE_API_SUCCESS = typeof AUTH_SEND_CODE_API_SUCCESS;
+
+export const AUTH_GET_USER_INFO = 'AUTH_GET_USER_INFO';
+
+// 注册账号api
+export const AUTH_POST_REGISTERED_API = 'AUTH_POST_REGISTERED_API';
+
+export const AUTH_POST_REGISTERED_API_SUCCESS = 'AUTH_POST_REGISTERED_API_SUCCESS';
+
+export const AUTH_POST_REGISTERED_API_ERROR = 'AUTH_POST_REGISTERED_API_ERROR';
+
+// 发送验证码
+export const AUTH_SAVE_CODE_STATUS = 'AUTH_SAVE_CODE_STATUS';
+export type AUTH_SAVE_CODE_STATUS = typeof AUTH_SAVE_CODE_STATUS;
 
 // reducer
 export const AUTH_SAVE_INFO = 'AUTH_SAVE_INFO';

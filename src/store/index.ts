@@ -11,7 +11,6 @@ import createReducerCreator from './reducer';
 
 import authReducer from './reducer/authReducer';
 import homeListReducer from './reducer/homeListReducer';
-import requestReducer from './reducer/requestReducer';
 import shoppingCartReducer from './reducer/shoppingCartReducer';
 
 import rootSaga from './saga';
@@ -57,7 +56,8 @@ interface Options<S> extends EnhancerOptions {
  */
 function configureStore<S>({
                              enhancers: baseEnhancers = [],
-                             reducer, initialState,
+                             reducer,
+                             initialState,
                              middleware: baseMiddleware = [],
                              ...config
                            }: Options<S>) {
@@ -93,7 +93,6 @@ export const history = createBrowserHistory();
 export const createReducer = createReducerCreator<ReducersFull>(history, {
   auth: persistReducer(persistAuthConfig, authReducer),
   shoppingCart: persistReducer(persistShoppingCartConfig, shoppingCartReducer),
-  request: requestReducer,
   homeList: homeListReducer,
 });
 

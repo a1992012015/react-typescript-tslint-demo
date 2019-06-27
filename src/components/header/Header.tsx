@@ -1,8 +1,10 @@
 import { AuthInterface, ReducersFull, ShoppingCartInterface } from '@/interfaces/globalInterface';
+import { authDeleteInfo, authGetUserInfo } from '@/store/action/authAction';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Dispatch } from 'redux';
+
 import logo from '../.././assets/images/logo2.png';
 import Navigation from './component/navigation/navigation';
 import UserState from './component/userStatus/userStatus';
@@ -10,9 +12,9 @@ import UserState from './component/userStatus/userStatus';
 import styles from './header.module.scss';
 
 interface Props {
-  signOutAction: () => void;
+  signOut: () => void;
   mergedShoppingCartAction: (phone: string) => void;
-  getUserInfoAction: () => void;
+  getUserInfo: () => void;
   auth: AuthInterface;
   shoppingCart: ShoppingCartInterface;
 }
@@ -22,23 +24,22 @@ interface Props {
  */
 class Header extends Component<Props> {
   componentDidUpdate(prevProps: Props, prevState: Props) {
-    const { auth, mergedShoppingCartAction } = this.props;
+    const { auth } = this.props;
     if (auth.userInfo.phone !== prevProps.auth.userInfo.phone) {
       // mergedShoppingCartAction(auth.userInfo.phone);
     }
   }
 
   componentDidMount() {
-    const { getUserInfoAction, auth } = this.props;
+    const { auth } = this.props;
     if (auth.token.access_token) {
-      getUserInfoAction();
+      this.props.getUserInfo();
     }
   }
 
   signOut = ({ key }: { key: string }) => {
     if (key === '/unlock') {
-      const { signOutAction } = this.props;
-      signOutAction();
+      this.props.signOut();
     }
   };
 
@@ -73,8 +74,8 @@ const mapStateToProps = (state: ReducersFull) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    signOutAction: () => dispatch({ type: 'SIGN_OUT' }),
-    getUserInfoAction: () => dispatch({ type: 'GET_USER_INFO' }),
+    signOut: () => dispatch(authDeleteInfo()),
+    getUserInfo: () => dispatch(authGetUserInfo()),
     mergedShoppingCartAction: (phone: string) => {
       dispatch({
         type: 'MERGED_SHOPPING_CART',

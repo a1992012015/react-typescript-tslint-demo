@@ -1,10 +1,9 @@
-import { AuthInterface, ReducersFull } from '@/interfaces/globalInterface';
+import { AuthInterface } from '@/interfaces/globalInterface';
 import { History, Location } from 'history';
-import React, { Component, ComponentType } from 'react';
+import React, { Component } from 'react';
 import Loadable from 'react-loadable';
-import { connect } from 'react-redux';
 import { match as Match, Route } from 'react-router-dom';
-import { compose, Dispatch } from 'redux';
+import { compose } from 'redux';
 
 import logo from '../../assets/images/logo.svg';
 import LoadingComponent from '../../components/higherOrderComponent/loadingComponent';
@@ -18,16 +17,16 @@ const signInPage = Loadable({
   loader: () => import('./SignInPage/SignInPage'),
   loading: LoadingComponent,
 });
-//
-// const signUp = Loadable({
-//   loader: () => import('./SignUp/SignUp'),
-//   loading: LoadingComponent
-// });
-//
-// const ForgotPassword = Loadable({
-//   loader: () => import('./ForgotPassword/ForgotPassword'),
-//   loading: LoadingComponent
-// });
+
+const SignUpPage = Loadable({
+  loader: () => import('./SignUpPage/SignUpPage'),
+  loading: LoadingComponent,
+});
+
+const ForgotPasswordPage = Loadable({
+  loader: () => import('./ForgotPasswordPage/ForgotPasswordPage'),
+  loading: LoadingComponent,
+});
 
 interface Props {
   readonly match: Match;
@@ -47,12 +46,13 @@ class AuthPage extends Component<Props, object> {
           <img className={styles['logo']} src={logo} alt='logo'/>
           <h2 className={styles['title']}>数字版权综合服务平台</h2>
           <SwitchDefault>
-            <Route exact={true} path={`${match.path}/signIn`} component={signInPage}/>
-            {/*<Route exact={true} path={`${match.path}/signUp`} component={SignUp} />*/}
-            {/*<Route exact={true} path={`${match.path}/forgotPassword`} component={ForgotPassword} />*/}
+            <Route exact={true} path={`${match.path}/sign-in`} component={signInPage}/>
+            <Route exact={true} path={`${match.path}/sign-up`} component={SignUpPage}/>
+            <Route exact={true} path={`${match.path}/forgot-password`} component={ForgotPasswordPage}/>
           </SwitchDefault>
         </div>
     );
   }
 }
+
 export default compose(LoginGuard)(AuthPage);

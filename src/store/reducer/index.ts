@@ -1,6 +1,6 @@
-import {connectRouter} from 'connected-react-router';
-import {History} from 'history';
-import {combineReducers, Reducer, ReducersMapObject} from 'redux';
+import { connectRouter } from 'connected-react-router';
+import { History } from 'history';
+import { combineReducers, Reducer, ReducersMapObject } from 'redux';
 
 /**
  * Create a reducer creator for potential additional reducer key/value pairs

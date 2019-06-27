@@ -10,6 +10,8 @@ export const HOME_LIST_GET_LIST_ERROR = 'HOME_LIST_GET_LIST_ERROR';
 
 export const HOME_LIST_GET_TYPE = 'HOME_LIST_GET_TYPE';
 
+export type HOME_LIST_GET_TYPE = typeof HOME_LIST_GET_TYPE;
+
 // reducer
 export const HOME_LIST_SAVE = 'HOME_LIST_SAVE';
 

@@ -10,6 +10,5 @@ export interface HomeListInterface {
 }
 
 export interface HomeListApiInterface {
-  key: string;
-  value: string;
+  [key: string]: string | number;
 }

@@ -1,25 +1,13 @@
 import { AuthLoginInterface } from '@/interfaces/authInterface';
-import {
-  AUTH_GET_TOKEN,
-  AUTH_GET_TOKEN_ERROR,
-  AUTH_GET_TOKEN_SUCCESS,
-  AUTH_GET_USER,
-  AUTH_GET_USER_ERROR,
-  AUTH_GET_USER_SUCCESS,
-} from '@/store/action-type/authType';
-import { requestApiFetch } from '@/store/action/requestAction';
+import { callApiWorker } from '@/utils/httpUtils';
 
 /**
  * 获取用户token
  * @param body api参数
  */
 export function getAuthTokenApi(body: AuthLoginInterface) {
-  return requestApiFetch({
-    requestType: AUTH_GET_TOKEN,
-    successType: AUTH_GET_TOKEN_SUCCESS,
-    errorType: AUTH_GET_TOKEN_ERROR,
+  return callApiWorker({
     baseURL: 'authApi',
-    storeKey: '',
     options: {
       url: '/oauth/token',
       method: 'post',
@@ -39,14 +27,51 @@ export function getAuthTokenApi(body: AuthLoginInterface) {
  * 获取用户信息
  */
 export function getAuthInfoApi() {
-  return requestApiFetch({
-    requestType: AUTH_GET_USER,
-    successType: AUTH_GET_USER_SUCCESS,
-    errorType: AUTH_GET_USER_ERROR,
+  return callApiWorker({
     baseURL: 'mallApi',
-    storeKey: '',
     options: {
       url: '/users',
+    },
+  });
+}
+
+/**
+ * 发送注册的验证码
+ */
+export function sendAuthCodeApi(body: object) {
+  return callApiWorker({
+    baseURL: 'mallApi',
+    options: {
+      url: '/sms/send',
+      params: body,
+    },
+  });
+}
+
+/**
+ * 注册新用户api
+ */
+export function registeredAuthApi(body: object) {
+  return callApiWorker({
+    baseURL: 'mallApi',
+    options: {
+      method: 'post',
+      url: '/users',
+      data: body,
+    },
+  });
+}
+
+/**
+ * 找回密码Api
+ */
+export function forgotPasswordApi(body: object) {
+  return callApiWorker({
+    baseURL: 'mallApi',
+    options: {
+      method: 'put',
+      url: '/users/reset_password',
+      data: body,
     },
   });
 }

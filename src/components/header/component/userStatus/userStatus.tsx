@@ -101,7 +101,7 @@ export default class extends Component<Props> {
                 </div>
               </Dropdown>
           ) : !auth.isSignIn ? (
-                  <NavLink to='/auth/signIn' className={styles['user-status-button']}>
+                  <NavLink to='/auth/sign-in' className={styles['user-status-button']}>
                     <Icon className={styles.header_icon} type='login'/>
                     登录
                   </NavLink>
