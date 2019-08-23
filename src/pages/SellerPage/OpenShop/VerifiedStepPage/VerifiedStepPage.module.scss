@@ -1,0 +1,14 @@
+@import '../../../../styles/vars';
+
+.open-shop {
+  width: 100%;
+  background: #fff;
+  min-width: $min-view-width;
+  max-width: $max-view-width;
+  margin: 30px 0;
+
+  .open-shop-steps {
+    width: 80%;
+    margin: 20px auto;
+  }
+}

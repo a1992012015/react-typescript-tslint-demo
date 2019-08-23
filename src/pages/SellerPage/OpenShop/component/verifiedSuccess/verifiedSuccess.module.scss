@@ -1,0 +1,16 @@
+
+.submit-information {
+  text-align: center;
+  margin: 90px auto;
+
+  .submit-information-success {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    background: #52c41a;
+    color: $white;
+    line-height: 120px;
+    font-size: 50px;
+    margin: 0 auto 30px;
+  }
+}

@@ -5350,6 +5350,11 @@ icss-utils@^4.1.0:
   dependencies:
     postcss "^7.0.14"
 
+idcard@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/idcard/-/idcard-4.1.0.tgz#816df2ce2e25d3d06fc17a6d2e64da86f954ad44"
+  integrity sha1-gW3yzi4l09BvwXptLmTahvlUrUQ=
+
 identity-obj-proxy@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/identity-obj-proxy/-/identity-obj-proxy-3.0.0.tgz#94d2bda96084453ef36fbc5aaec37e0f79f1fc14"

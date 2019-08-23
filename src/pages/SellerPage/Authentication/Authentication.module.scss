@@ -1,0 +1,11 @@
+.authentication {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 130px;
+
+  .authentication-info {
+    margin-top: 20px;
+  }
+}

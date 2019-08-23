@@ -13,6 +13,9 @@ const authInit: AuthInterface = {
     roles: [],
     status: '',
     username: '',
+    real_name_validate: {
+      status: 0,
+    },
   },
   token: {
     access_token: '',

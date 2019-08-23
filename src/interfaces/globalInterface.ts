@@ -31,6 +31,10 @@ export interface AuthInterface {
     roles: string[];
     status: string;
     username: string;
+    real_name_validate: {
+      status: number;
+      audit_msg: string;
+    };
   };
   token: {
     access_token: string;

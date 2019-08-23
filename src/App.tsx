@@ -21,6 +21,11 @@ const AuthPage = Loadable({
   loading: LoadingComponent,
 });
 
+const SellerPage = Loadable({
+  loader: () => import('./pages/SellerPage/SellerPage'),
+  loading: LoadingComponent,
+});
+
 /**
  * 项目根路由
  */
@@ -33,9 +38,9 @@ class App extends Component {
             <SwitchDefault>
               <Route path='/home' component={HomePage}/>
               <Route path='/auth' component={AuthPage} />
+              <Route path='/seller' component={SellerPage} />
               {/*<Route path='/buyer' component={Buyer} />*/}
               {/*<Route path='/user' component={User} />*/}
-              {/*<Route path='/copyright' component={Copyright} />*/}
               {/*<Route path='/shopping-cart' component={ShoppingCardUnLogin} />*/}
             </SwitchDefault>
           </Layout.Content>

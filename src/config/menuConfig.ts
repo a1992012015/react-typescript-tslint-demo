@@ -7,8 +7,8 @@ const headerNavigation = [
   },
   {
     name: '我是卖家',
-    path: '/copyright',
-    key: '/copyright',
+    path: '/seller',
+    key: '/seller',
     icon: 'key',
   },
   {
